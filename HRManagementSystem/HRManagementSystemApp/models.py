@@ -14,7 +14,7 @@ class DepartmentsChoices(models.TextChoices):
 
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True, blank=True)
-    department = models.ForeignKey('Department', on_delete=models.CASCADE)
+    department = models.ForeignKey('Department', on_delete=models.CASCADE, related_name="foreignDepartment")
     date_employment = models.DateField()
     usedVacDays = models.IntegerField()
     usedSickLeave = models.IntegerField()
@@ -22,9 +22,9 @@ class CustomUser(AbstractUser):
     mobile_phone = models.CharField(default=0, blank=True, max_length=20)
 
 
-class Department(models.TextChoices):
+class Department(models.Model):
     name = models.CharField(max_length=30, choices=DepartmentsChoices.choices)
-    employees = models.ManyToManyField(CustomUser)
+    employees = models.ManyToManyField(CustomUser, related_name="foreignEmployees")
 
     def __str__(self):
         return self.name
@@ -36,3 +36,7 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Request(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
