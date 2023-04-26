@@ -1,0 +1,35 @@
+.nav-prime{
+    background: #A2BCE0;
+}
+
+.nav{
+    --bs-nav-link-hover-color: white;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: rgba(58, 50, 158, 80);
+
+}
+
+.nav-link{
+    color: white;   
+    background-color: rgba(58, 50, 158, 0.5);
+    height: 100px;
+    width: 200px;
+}
+
+.logout{
+    height: 150px;
+}
+
+img.navicons{
+ height: 49px ;
+ width: 48px;
+} 
+
+.nav-pills{
+    margin-top: auto;
+}
+
+.sec{
+    background: rgba(216, 214, 234, 1);
+}
