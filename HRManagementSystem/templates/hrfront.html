@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,17 +36,17 @@
                     <ul class="nav nav-pills flex-column text-center align-items-center my-5">
                         <li class="nav-item py-2">
                             <a href="#" class="nav-link active rounded-4">
-                                <img class="navicons mt-3" src="vectors/home.svg" alt="">
+                                <img class="navicons mt-3" src="{% static 'home.svg' %}" alt="">
                             </a>
                         </li>
                         <li class="nav-item py-2">
                             <a href="#" class="nav-link rounded-4">
-                                <img class="navicons mt-3" src="vectors/arrows.svg" alt="">
+                                <img class="navicons mt-3" src="{% static 'arrows.svg' %}" alt="">
                             </a>
                         </li>
                         <li class="nav-item py-2">
                             <a href="#" class="nav-link rounded-4">
-                                <img class="navicons mt-3" src="vectors/inbox.svg" alt="">
+                                <img class="navicons mt-3" src="{% static 'inbox.svg' %}" alt="">
                             </a>
                         </li>
                     </ul>
@@ -54,7 +55,7 @@
                     <div class="pt-5">
                         <div class="nav-item ">
                             <a href="#" class="d-flex justify-content-center " >
-                                <img class="navicons" src="vectors/Logout.svg" alt="">
+                                <img class="navicons" src="{% static 'Logout.svg' %}" alt="">
                             </a>
                         </div>
                     </div>
@@ -70,10 +71,10 @@
                         <h1 class="carosel-caption textOverImage text-white fw-bold">HR Management System</h1>
                       </div>
                       <div class="col-auto col-md-4 text-end">
-                          <h6 class="textOverImage text-white">Stefan Jankulovski</h6>
+                          <h6 class="textOverImage text-white">{{ user.first_name }} {{ user.last_name }}</h6>
                       </div>
                       <div class="col-auto">
-                        <img src="user.png" alt="">
+                        <img src="{% static 'user.png' %}" alt="">
                       </div>
                     </div>
 
@@ -82,13 +83,13 @@
                       <div class="col-auto col-md-4 mx-auto">
                           <button class="userButtons border-0 p-3">
                               <p class="d-inline fs-4 fw-bold blueColor px-4">Request free day</p>
-                              <img src="vectors/ArrowBlue.svg" alt="" class=" p-2">
+                              <img src="{% static 'ArrowBlue.svg' %}" alt="" class=" p-2">
                           </button>
                       </div>
                       <div class="col-auto col-md-4 mx-auto p-0 ms-2">
                           <button class="userButtons border-0 p-3">
                               <p class="d-inline fs-4 fw-bold blueColor px-2">Remaining days:</p>
-                              <p class="d-inline fs-2 px-4 numDays">24</p>
+                              <p class="d-inline fs-2 px-4 numDays">{{ remainingDays }}</p>
                           </button>
                       </div>
                   </div>
@@ -106,4 +107,76 @@
      <!-- <img src="vectors/BlueDesign.svg" alt="" class="img-fluid design">  -->
                       <!-- <img src="vectors/BlueDesignBottom.svg" alt="" class="img-fluid design">  -->
 </body>
+<style>
+    .nav-prime{
+    background: #A2BCE0;
+}
+
+.nav{
+    --bs-nav-link-hover-color: white;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: rgba(58, 50, 158, 80);
+
+}
+
+.nav-link{
+    color: white;
+    background-color: rgba(58, 50, 158, 0.5);
+    height: 100px;
+    width: 200px;
+}
+
+.logout{
+    height: 150px;
+}
+
+img.navicons{
+ height: 49px ;
+ width: 48px;
+}
+
+.nav-pills{
+    margin-top: auto;
+}
+
+.sec{
+    background: rgba(216, 214, 234, 1);
+}
+
+.design{
+    z-index: 0;
+}
+
+.textOverImage{
+    z-index: 1;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8);
+}
+
+.blueColor{
+    color: rgba(42, 108, 162, 1);
+
+}
+
+.userButtons{
+    background-color: white;
+    border-radius: 22px;
+    box-shadow: 6px 8px 12px 5px rgba(0, 0, 0, 0.17);
+}
+
+.numDays{
+    font-weight: 1000;
+    color: rgba(181, 176, 224, 0.9);
+}
+
+#calendar{
+    background-color: white;
+    border: 7px solid #2A6CA2;
+    box-shadow: 0px 23px 80px rgba(0, 0, 0, 0.4), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198), 0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035), 0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725), 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
+    border-radius: 16px;
+}
+
+
+
+</style>
 </html>

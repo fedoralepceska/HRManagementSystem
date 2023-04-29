@@ -1,5 +1,5 @@
 from django import forms
-from HRManagementSystem.HRManagementSystemApp.models import Department, CustomUser, Request
+from ..HRManagementSystemApp.models import Department, CustomUser, Request
 
 
 class DepartmentForm(forms.ModelForm):

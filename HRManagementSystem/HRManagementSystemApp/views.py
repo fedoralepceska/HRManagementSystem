@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Department, DepartmentsChoices, Request
-from ..HRManagementSystem.forms import DepartmentForm, CustomUserForm, RequestForm
+from .models import Department, DepartmentsChoices, Request, CustomUser
+from HRManagementSystem.forms import DepartmentForm, CustomUserForm, RequestForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -57,3 +57,9 @@ def add_request(request):
         form = RequestForm()
 
     return render(request, 'add_request.html', {'user': user, 'form': form})
+
+
+def hr_front(request):
+    user = CustomUser.objects.get(pk=request.user.pk)
+    remaining_days = 24 - user.usedVacDays - user.usedFreeDays
+    return render(request, 'hrfront.html', {'user': user, 'remainingDays': remaining_days})

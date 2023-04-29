@@ -15,10 +15,10 @@ class DepartmentsChoices(models.TextChoices):
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True, blank=True)
     department = models.ForeignKey('Department', on_delete=models.CASCADE, related_name="foreignDepartment")
-    date_employment = models.DateField()
-    usedVacDays = models.IntegerField()
-    usedSickLeave = models.IntegerField()
-    usedFreeDays = models.IntegerField()
+    date_employment = models.DateField(default='2020-12-12', blank=True)
+    usedVacDays = models.IntegerField(default=0, blank=True)
+    usedSickLeave = models.IntegerField(default=0, blank=True)
+    usedFreeDays = models.IntegerField(default=0, blank=True)
     mobile_phone = models.CharField(default=0, blank=True, max_length=20)
 
 
