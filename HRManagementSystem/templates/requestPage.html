@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <title>Request Page</title>
+
+    <script>
+        $(function(){
+            $('#start-datepicker, #end-datepicker').datepicker({
+                format: 'dd.mm.yyyy',
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    </script>
+
+    <style>
+        .nav-prime{
+        background: #A2BCE0;
+        }
+
+        .nav{
+            --bs-nav-link-hover-color: white;
+        }
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+            background-color: rgba(58, 50, 158, 80);
+
+        }
+
+        .nav-link{
+            color: white;   
+            background-color: rgba(58, 50, 158, 0.5);
+            height: 100px;
+            width: 200px;
+        }
+
+        img.navicons{
+        height: 49px ;
+        width: 48px;
+        } 
+
+        .nav-pills{
+            margin-top: auto;
+        }
+
+        .BgCol{
+            background: rgba(216, 214, 234, 1);
+        }
+
+        .ButtonsPosition{
+            width: 100%; 
+            top: 180px;
+        }
+
+        .HeaderContent{
+            width: 100%;
+        }
+
+        .send{
+            background: rgba(58, 50, 158, 0.75);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.56);
+            border-radius: 13px;
+            border: 0px
+        }
+
+        .FormPos{
+            top: -200px;
+        }
+
+        .formStyle{
+            background: rgba(255, 255, 255, 0.65);
+            border: 7px solid #2A6CA2;
+            box-shadow: 9px 8px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 33px;
+        }
+
+        .bottomWaves{
+            margin-top: -350px;
+        }
+    </style>
+        
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+    <!-- navbar -->
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-auto col-md-2 nav-prime position-relative d-flex flex-column justify-content-between">
+            <a href="" class="d-flex text-decoration-none justify-content-center p-5">
+              <img src="logo.png" alt="">
+            </a>
+            <div>
+              <ul class="nav nav-pills flex-column text-center align-items-center py-2">
+                <li class="nav-item py-2">
+                  <a href="hrfront.html" class="nav-link rounded-4">
+                    <img class="navicons mt-3" src="vectors/home.svg" alt="">
+                  </a>
+                </li>
+                <li class="nav-item py-2">
+                  <a href="requestPage.html" class="nav-link active rounded-4">
+                    <img class="navicons mt-3" src="vectors/arrows.svg" alt="">
+                  </a>
+                </li>
+                <li class="nav-item py-2">
+                  <a href="Inbox.html" class="nav-link rounded-4">
+                    <img class="navicons mt-3" src="vectors/inbox.svg" alt="">
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-auto my-5">
+              <div class="nav-item">
+                <a href="#" class="d-flex justify-content-center " >
+                  <img class="navicons" src="vectors/Logout.svg" alt="">
+                </a>
+              </div>
+            </div> 
+          </div>
+          
+
+        <!-- header -->
+        <div class="col-auto col-md-10 min-vh-100 BgCol p-0 position-relative">
+            <div class="justify-content-center">
+
+              <!-- Waves upper design -->
+              <svg width="col-md-10" height="auto" viewBox="0 0 1439 491" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M497.455 408.358C334.593 374.996 146.101 135.58 146.101 135.58L1680.81 57.0158L1711.9 322.01C1711.9 322.01 1505.39 271.867 1415.35 218.924C1325.3 165.98 1187.92 217.675 1187.92 217.675C1187.92 217.675 1175.12 220.052 1041.04 291.551C906.953 363.051 933.743 360.087 805.157 404.086C676.57 448.086 591.917 427.709 497.455 408.358Z" fill="#BEB8EB"/>
+                  <g filter="url(#filter0_d_9_322)">
+                  <path d="M601.964 397.612C428.273 442.225 321.444 397.656 201.719 352.999C131.994 326.991 62.0543 265.269 0 194.927V-99.4759L1523.5 4.40908L1519 288.587C1482.06 266.405 1448.15 243.445 1422.59 221.318C1313.72 127.055 1127.44 181.742 1127.44 181.742C1127.44 181.742 1110.45 183.181 925.432 268.09C740.413 352.999 775.655 352.999 601.964 397.612Z" fill="#5299D3"/>
+                  </g>
+                  <defs>
+                  <filter id="filter0_d_9_322" x="0" y="-99.4759" width="1545.5" height="525.575" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                  <feOffset dx="17" dy="5"/>
+                  <feGaussianBlur stdDeviation="2.5"/>
+                  <feComposite in2="hardAlpha" operator="out"/>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_9_322"/>
+                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_9_322" result="shape"/>
+                  </filter>
+                  </defs>
+              </svg>
+
+              <!-- Header Content -->
+              <div class="row flex align-items-center text-center py-5 position-absolute top-0 HeaderContent">
+                <div class="col-md-6">
+                  <h1 class="carosel-caption textOverImage text-white fw-bold">Request Free days</h1>
+                </div>
+                <div class="col-auto col-md-4 text-end">
+                    <h6 class="textOverImage text-white">Stefan Jankulovski</h6>
+                </div>
+                <div class="col-auto">
+                  <img src="user.png" alt="">
+                </div>
+              </div>
+
+
+
+              <!-- Form -->
+              
+              <div class="col-auto col-md-9 mx-auto FormPos position-relative">
+                    <form class="p-5 formStyle">
+
+                            <div class="row g-5">
+                                <div class="col">
+                                  <input type="text" class="form-control" placeholder="Name">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control" placeholder="Surname">
+                                </div>
+                              </div>
+
+
+                            <div class="position-relative my-4 col-auto col-md-5">
+                                <input type="text" id="start-datepicker" placeholder="Start-date" class="form-control">
+                                <img src="vectors/Calendar.svg" alt="" class="position-absolute" style="top: 5px; right: 10px; height: 75%;">
+                            </div>
+                              
+                            <div class="position-relative my-4 col-auto col-md-5">
+                                <input type="text" id="end-datepicker" placeholder="End-date" class="form-control">
+                                <img src="vectors/Calendar.svg" alt="" class="position-absolute" style="top: 5px; right: 10px; height: 75%;">
+                            </div>
+
+                                                       
+                            <label for="occasions" class="visually-hidden">Occasions</label>
+                            <select id="occasions" name="occasions" placeholder="Special occasions" class="form-select my-4" >
+                                <option selected>Special occasion</option>
+                                <option value="vacation">Vacation</option>
+                                <option value="materniry">Maternity leave</option>
+                                <option value="paternity">Paternity leave</option>
+                                <option value="sick">Sick leave</option>
+                            </select>
+
+
+                            <div class="input-group my-4">
+                                <textarea class="form-control" placeholder="Reason" rows="5"></textarea>
+                            </div>
+
+                            
+                            <div class="d-flex justify-content-center pt-4">
+                                <button type="submit" class="send text-white fw-semibold p-2 px-4">Send</button>
+                            </div>                            
+                    </form>
+                </div>
+               
+
+              </div>
+
+
+
+              <!-- Bottom Design -->
+
+              <div>
+                <svg width="col-md-10" height="auto" viewBox="0 0 1440 414" fill="none" xmlns="http://www.w3.org/2000/svg" class="bottomWaves">
+                    <path d="M1375.81 103.516C1550.53 145.486 1752.75 446.672 1752.75 446.672L106.289 545.506L72.934 212.142C72.934 212.142 294.477 275.222 391.081 341.825C487.685 408.429 635.064 343.396 635.064 343.396C635.064 343.396 648.802 340.406 792.648 250.459C936.494 160.513 907.754 164.242 1045.7 108.89C1183.65 53.5382 1274.47 79.1723 1375.81 103.516Z" fill="#BEB8EB"/>
+                    <g filter="url(#filter0_d_9_323)">
+                    <path d="M916.67 279.974C1115.16 173.158 1077.35 173.158 1263.69 117.035C1396.12 77.1489 1492.32 93.9268 1583 127.139C1590.2 129.774 1597.36 132.513 1604.5 135.336V588.653L-13 588.653V82.6364C-13 82.6364 266.509 220.229 383.308 338.813C500.107 457.396 699.949 388.6 699.949 388.6C699.949 388.6 718.178 386.789 916.67 279.974Z" fill="#5299D3"/>
+                    </g>
+                    <defs>
+                    <filter id="filter0_d_9_323" x="-13" y="82.6364" width="1639.5" height="516.016" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                    <feOffset dx="17" dy="5"/>
+                    <feGaussianBlur stdDeviation="2.5"/>
+                    <feComposite in2="hardAlpha" operator="out"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_9_323"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_9_323" result="shape"/>
+                    </filter>
+                    </defs>
+                </svg>
+              </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
