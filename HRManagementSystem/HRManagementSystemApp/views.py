@@ -60,7 +60,7 @@ def add_request(request):
 
 
 def hr_front(request):
-    # user = CustomUser.objects.get(pk=request.user.pk)
-    # remaining_days = 24 - user.usedVacDays - user.usedFreeDays
-    # return render(request, 'hrfront.html', {'user': user, 'remainingDays': remaining_days})
+    user = CustomUser.objects.get(pk=request.user.pk)
+    remaining_days = 24 - user.usedVacDays - user.usedFreeDays
+    return render(request, 'hrfront.html', {'user': user, 'remainingDays': remaining_days})
     return render(request, 'hrfront.html')
