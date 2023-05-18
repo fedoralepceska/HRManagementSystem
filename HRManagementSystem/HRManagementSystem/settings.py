@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'HRManagementSystemApp',
-    'django_extensions'
+    'django_extensions',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
