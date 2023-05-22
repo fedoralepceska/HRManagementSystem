@@ -1,5 +1,6 @@
 from django import forms
 from HRManagementSystemApp.models import Department, CustomUser, Request
+from django.contrib.auth.forms import AuthenticationForm
 
 
 class DepartmentForm(forms.ModelForm):
@@ -54,3 +55,8 @@ class RequestForm(forms.ModelForm):
         user.save()
 
         return request
+
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))

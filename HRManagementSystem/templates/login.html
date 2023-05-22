@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+{% load static %}
 <head>
     <title>Login Form</title>
     <style>
+        {% load static %}
         body {
             display: flex;
             justify-content: center;
@@ -10,7 +12,7 @@
             height: 100vh;
             margin: 0;
             background-color: rgba(234,181,111,0.5);
-            background-image: url("vectors/bg.png");
+            background-image: url("{% static 'bg.png' %}");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -54,11 +56,16 @@
 </head>
 <body>
 <div class="login-form">
-    <img src="logo.png" alt="">
-    <form>
-        <input type="text" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
-        <button type="submit">Login</button>
+    <img src="{% static 'logo.png' %}" alt="">
+    <form method="post" action="/login">
+        {% csrf_token %}
+        {% for item in login_form %}
+            {{ item }} <br>
+        {% endfor %}
+        <button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+<!--        <input type="text" placeholder="Email" required>-->
+<!--        <input type="password" placeholder="Password" required>-->
+<!--        <button type="submit">Login</button>-->
     </form>
 </div>
 </body>
