@@ -1,6 +1,7 @@
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from .models import Department, DepartmentsChoices, Request, CustomUser
-from HRManagementSystem.forms import DepartmentForm, CustomUserForm, RequestForm
+from HRManagementSystem.forms import DepartmentForm, CustomUserForm, RequestForm, HRForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -26,22 +27,22 @@ def create_department(request):
     return render(request, 'create_department.html', {'form': form})
 
 
-@login_required
 def create_user(request):
-    if request.user.department != DepartmentsChoices.HR:
-        # If the current user is not from the HR department, redirect to the department_users view.
-        return redirect('department_users')
-
     if request.method == 'POST':
-        form = CustomUserForm(request.POST)
+        form = HRForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
-            return redirect('department_users')
+            return redirect('home')
     else:
-        form = CustomUserForm()
-    return render(request, 'create_user.html', {'form': form})
+        form = HRForm()
+    return render(request, 'accounts.html', {'form': form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
 
 
 @login_required
@@ -63,4 +64,15 @@ def hr_front(request):
     user = CustomUser.objects.get(pk=request.user.pk)
     remaining_days = 24 - user.usedVacDays - user.usedFreeDays
     return render(request, 'hrfront.html', {'user': user, 'remainingDays': remaining_days})
-    return render(request, 'hrfront.html')
+
+
+def index(request):
+    return render(request, 'index.html')
+
+
+def account(request):
+    return render(request, 'accounts.html')
+
+
+def inbox(request):
+    return render(request, 'inbox.html')

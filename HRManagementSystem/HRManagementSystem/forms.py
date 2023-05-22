@@ -16,9 +16,25 @@ class CustomUserForm(forms.ModelForm):
         fields = ['username', 'email', 'department', 'date_employment', 'usedVacDays', 'usedSickLeave', 'usedFreeDays']
 
 
+class HRForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = CustomUser
+        fields = ['first_name', 'last_name', 'username', 'email', 'password', 'department', 'usedFreeDays', 'date_employment']
+        labels = {
+            'usedFreeDays': 'Your Free Days',
+            'first_name': 'Name',
+            'last_name': 'Surname',
+            'date_employment': 'Date of Employment',
+            'department': 'Job Position'
+        }
+
+
 class RequestForm(forms.ModelForm):
     num_days = forms.IntegerField()
-    request_type = forms.ChoiceField(choices=[('free', 'Free Days'), ('sick', 'Sick Leave'), ('vacation', 'Vacation Days')])
+    request_type = forms.ChoiceField(
+        choices=[('free', 'Free Days'), ('sick', 'Sick Leave'), ('vacation', 'Vacation Days')])
 
     class Meta:
         model = Request
