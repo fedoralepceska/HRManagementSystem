@@ -75,8 +75,16 @@ def account(request):
     return render(request, 'accounts.html')
 
 
-def inbox(request):
-    return render(request, 'inbox.html')
+def inbox_hr(request):
+    return render(request, 'inbox-hr.html')
+
+
+def inbox_user(request):
+    return render(request, 'inbox-user.html')
+
+
+def request_user(request):
+    return render(request, 'requestPage.html')
 
 
 def login_request(request):
@@ -94,7 +102,7 @@ def login_request(request):
                     return redirect("home")
                 else:
                     # change this redirect to user default home page when it's implemented
-                    return redirect("home")
+                    return redirect("hrfront")
             else:
                 messages.error(request, "Invalid username or password.")
         else:

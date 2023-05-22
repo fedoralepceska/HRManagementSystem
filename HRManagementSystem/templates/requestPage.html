@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{%load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -99,20 +99,20 @@
               <img src="logo.png" alt="">
             </a>
             <div>
-              <ul class="nav nav-pills flex-column text-center align-items-center py-2">
+             <ul class="nav nav-pills flex-column text-center align-items-center py-2">
                 <li class="nav-item py-2">
-                  <a href="hrfront.html" class="nav-link rounded-4">
-                    <img class="navicons mt-3" src="vectors/home.svg" alt="">
+                  <a href="hrfront" class="nav-link rounded-4">
+                    <img class="navicons mt-3" src="{% static 'vectors/home-user.svg' %}" alt="">
                   </a>
                 </li>
                 <li class="nav-item py-2">
-                  <a href="requestPage.html" class="nav-link active rounded-4">
-                    <img class="navicons mt-3" src="vectors/arrows.svg" alt="">
+                  <a href="request-user" class="nav-link active rounded-4">
+                    <img class="navicons mt-3" src="{% static 'vectors/arrows.svg' %}" alt="">
                   </a>
                 </li>
                 <li class="nav-item py-2">
-                  <a href="Inbox.html" class="nav-link rounded-4">
-                    <img class="navicons mt-3" src="vectors/inbox.svg" alt="">
+                  <a href="inbox-user" class="nav-link rounded-4">
+                    <img class="navicons mt-3" src="{% static 'vectors/inbox.svg' %}" alt="">
                   </a>
                 </li>
               </ul>
@@ -132,7 +132,7 @@
             <div class="justify-content-center">
 
               <!-- Waves upper design -->
-              <svg width="col-md-10" height="auto" viewBox="0 0 1439 491" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="col-md-10" viewBox="0 0 1439 491" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M497.455 408.358C334.593 374.996 146.101 135.58 146.101 135.58L1680.81 57.0158L1711.9 322.01C1711.9 322.01 1505.39 271.867 1415.35 218.924C1325.3 165.98 1187.92 217.675 1187.92 217.675C1187.92 217.675 1175.12 220.052 1041.04 291.551C906.953 363.051 933.743 360.087 805.157 404.086C676.57 448.086 591.917 427.709 497.455 408.358Z" fill="#BEB8EB"/>
                   <g filter="url(#filter0_d_9_322)">
                   <path d="M601.964 397.612C428.273 442.225 321.444 397.656 201.719 352.999C131.994 326.991 62.0543 265.269 0 194.927V-99.4759L1523.5 4.40908L1519 288.587C1482.06 266.405 1448.15 243.445 1422.59 221.318C1313.72 127.055 1127.44 181.742 1127.44 181.742C1127.44 181.742 1110.45 183.181 925.432 268.09C740.413 352.999 775.655 352.999 601.964 397.612Z" fill="#5299D3"/>
@@ -183,12 +183,12 @@
 
                             <div class="position-relative my-4 col-auto col-md-5">
                                 <input type="text" id="start-datepicker" placeholder="Start-date" class="form-control">
-                                <img src="vectors/Calendar.svg" alt="" class="position-absolute" style="top: 5px; right: 10px; height: 75%;">
+                                <img src="{% static 'vectors/Calendar.svg' %}" alt="" class="position-absolute" style="top: 5px; right: 10px; height: 75%;">
                             </div>
                               
                             <div class="position-relative my-4 col-auto col-md-5">
                                 <input type="text" id="end-datepicker" placeholder="End-date" class="form-control">
-                                <img src="vectors/Calendar.svg" alt="" class="position-absolute" style="top: 5px; right: 10px; height: 75%;">
+                                <img src="{% static 'vectors/Calendar.svg' %}" alt="" class="position-absolute" style="top: 5px; right: 10px; height: 75%;">
                             </div>
 
                                                        
@@ -221,7 +221,7 @@
               <!-- Bottom Design -->
 
               <div>
-                <svg width="col-md-10" height="auto" viewBox="0 0 1440 414" fill="none" xmlns="http://www.w3.org/2000/svg" class="bottomWaves">
+                <svg width="col-md-10" viewBox="0 0 1440 414" fill="none" xmlns="http://www.w3.org/2000/svg" class="bottomWaves">
                     <path d="M1375.81 103.516C1550.53 145.486 1752.75 446.672 1752.75 446.672L106.289 545.506L72.934 212.142C72.934 212.142 294.477 275.222 391.081 341.825C487.685 408.429 635.064 343.396 635.064 343.396C635.064 343.396 648.802 340.406 792.648 250.459C936.494 160.513 907.754 164.242 1045.7 108.89C1183.65 53.5382 1274.47 79.1723 1375.81 103.516Z" fill="#BEB8EB"/>
                     <g filter="url(#filter0_d_9_323)">
                     <path d="M916.67 279.974C1115.16 173.158 1077.35 173.158 1263.69 117.035C1396.12 77.1489 1492.32 93.9268 1583 127.139C1590.2 129.774 1597.36 132.513 1604.5 135.336V588.653L-13 588.653V82.6364C-13 82.6364 266.509 220.229 383.308 338.813C500.107 457.396 699.949 388.6 699.949 388.6C699.949 388.6 718.178 386.789 916.67 279.974Z" fill="#5299D3"/>
