@@ -1,8 +1,9 @@
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate, login
 from django.shortcuts import render, redirect
 from .models import Department, DepartmentsChoices, Request, CustomUser
-from HRManagementSystem.forms import DepartmentForm, CustomUserForm, RequestForm, HRForm
+from HRManagementSystem.forms import DepartmentForm, CustomUserForm, RequestForm, HRForm, LoginForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 # Create your views here.
@@ -76,3 +77,26 @@ def account(request):
 
 def inbox(request):
     return render(request, 'inbox.html')
+
+
+def login_request(request):
+    form = LoginForm()
+    if request.method == "POST":
+        form = LoginForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.info(request, f"You are now logged in as {username}.")
+                if user.department.name == DepartmentsChoices.HR:
+                    return redirect("home")
+                else:
+                    # change this redirect to user default home page when it's implemented
+                    return redirect("home")
+            else:
+                messages.error(request, "Invalid username or password.")
+        else:
+            messages.error(request, "Invalid username or password.")
+    return render(request=request, template_name="login.html", context={"login_form": form})
