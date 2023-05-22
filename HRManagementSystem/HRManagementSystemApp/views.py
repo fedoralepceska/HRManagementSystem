@@ -1,7 +1,9 @@
+from django.contrib.auth import logout, authenticate, login
 from django.shortcuts import render, redirect
-from .models import Department, DepartmentsChoices, Request
-from ..HRManagementSystem.forms import DepartmentForm, CustomUserForm, RequestForm
+from .models import Department, DepartmentsChoices, Request, CustomUser
+from HRManagementSystem.forms import DepartmentForm, CustomUserForm, RequestForm, HRForm, LoginForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 # Create your views here.
@@ -26,22 +28,22 @@ def create_department(request):
     return render(request, 'create_department.html', {'form': form})
 
 
-@login_required
 def create_user(request):
-    if request.user.department != DepartmentsChoices.HR:
-        # If the current user is not from the HR department, redirect to the department_users view.
-        return redirect('department_users')
-
     if request.method == 'POST':
-        form = CustomUserForm(request.POST)
+        form = HRForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
-            return redirect('department_users')
+            return redirect('home')
     else:
-        form = CustomUserForm()
-    return render(request, 'create_user.html', {'form': form})
+        form = HRForm()
+    return render(request, 'accounts.html', {'form': form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
 
 
 @login_required
@@ -57,3 +59,44 @@ def add_request(request):
         form = RequestForm()
 
     return render(request, 'add_request.html', {'user': user, 'form': form})
+
+
+def hr_front(request):
+    user = CustomUser.objects.get(pk=request.user.pk)
+    remaining_days = 24 - user.usedVacDays - user.usedFreeDays
+    return render(request, 'hrfront.html', {'user': user, 'remainingDays': remaining_days})
+
+
+def index(request):
+    return render(request, 'index.html')
+
+
+def account(request):
+    return render(request, 'accounts.html')
+
+
+def inbox(request):
+    return render(request, 'inbox.html')
+
+
+def login_request(request):
+    form = LoginForm()
+    if request.method == "POST":
+        form = LoginForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.info(request, f"You are now logged in as {username}.")
+                if user.department.name == DepartmentsChoices.HR:
+                    return redirect("home")
+                else:
+                    # change this redirect to user default home page when it's implemented
+                    return redirect("home")
+            else:
+                messages.error(request, "Invalid username or password.")
+        else:
+            messages.error(request, "Invalid username or password.")
+    return render(request=request, template_name="login.html", context={"login_form": form})
